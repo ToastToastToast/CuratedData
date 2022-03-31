@@ -15,7 +15,7 @@ let numVehicles = 2;
 let alpha = 0;
 
 //stars
-let numStars = 10;
+let numStars = 20;
 let stars = [];
 
 function preload() {
@@ -27,6 +27,7 @@ function preload() {
 
   titleFont = loadFont('titleFont.ttf');
   standardFont = loadFont('normalFont.ttf');
+
 }
 // tree = 0, beach = 1, bed = 2, cabin = 3, candle = 4, city = 5
 // castle = 6, forest = 7, gas = 8, ghost =9, campfire = 10
