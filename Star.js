@@ -8,7 +8,7 @@ class Star{
 
   move(){
     this.yPos = this.yPos + this.speed;
-    if(this.yPos > height + 10){
+    if(this.yPos > height + 30){
       this.yPos=0;
     }
   }
@@ -32,7 +32,7 @@ class Star{
   }
 
   randomPos(x){
-    if(this.yPos > height){
+    if(this.yPos > height+10){
       this.xPos = x;
     }
 

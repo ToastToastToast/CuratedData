@@ -6,6 +6,7 @@ canvas {
   display: block;
 }
 
+
 <style>
 .button {
   border: none;
@@ -19,6 +20,69 @@ canvas {
   cursor: pointer;
 }
 
-.button1 {background-color: #f4ca16;} /* Yellow */
+/*.button1 {background-color: #f4ca16;} /* Yellow */
+
+/*artist statement style */
+#artistStatement{
+  border: none;
+  background-color: #f4ca16;
+  color: black;
+  text-align: center;
+  text-decoration: none;
+  display: block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+/*back button style */
+#back{
+  border: none;
+  background-color: #f4ca16;
+  color: black;
+  text-align: center;
+  text-decoration: none;
+  display: block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
 
 </style>
+
+/*remove default style */
+.mySliders{
+  width: 80px;
+  background-color: transparent;
+
+  -webkit-appearance: none;
+}
+
+.mySliders:focus {
+  outline: none;
+}
+
+/*slide track */
+.mySliders::-webkit-slider-runnable-track {
+  background: #000000;
+  height: 3px;
+  -webkit-appearance: none;
+
+  cursor: pointer;
+
+}
+
+/*thumb of the slider */
+.mySliders::-webkit-slider-thumb {
+  width: 15px;
+  height: 15px;
+  color:#ffbb00;
+  background: #ffbb00;
+  cursor: pointer;
+  -webkit-appearance: none;
+
+  margin-top: -6px;
+
+  border-radius: 8px;
+
+}
