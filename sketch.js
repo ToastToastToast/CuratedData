@@ -5,11 +5,34 @@ let state = 'title';
 let titleFont;
 let standardFont;
 let imgBG;
+let answers = [
+'The large field of grass with a singular tree sitting on top of the hill. A peaceful location surronded by nature',
+"The sound of the crashing waves brings one's mind to ease.",
+"The warmth, cozy feeling of being in bed can't be beat. The alarm clock sitting beside the bed waits idle for the time the orange sun to rise over the horizon",
+"The cold weather sends shivers down the spine. The aurora magnificently glows in the dark blue sky",
+"The small light of the candle captivates the gaze. The small flame dances while being surronded by darkness",
+"The bustling city streets and cars echo throughout the city. The neon lights scattered across buildings bring life and color to the otherwise gray buildings",
+"There's nothing like the magical night of fireworks",
+"The darkness of the forest and the small flashing lights of fireflies allures people into nature",
+"The comforting of the bright lights and the conveience store located on the side of a dark street eases one's mind, knowing the store haws everything you can ask for",
+"The spooky figure becomes incredibly intriuging, to the point where the eye can't be drawn away from it",
+"The crackling of the campfire brings the sensation of being outdoors. Marshmallows anyone?",
+"The smell of delicious food drifts through the air. The anticipation of eating a delicious feast fills one's mind",
+"The moonlight brightly glows off of the gray rock formations, contrasting with the vast sky full of stars",
+"Staring up into the sky mesmerized by the beautiful sights of galaxy. The imagination of what might be out there stretches far and wide",
+"The night lights lined up along the streets lights the path toward the end destination, guiding the path through the darkness",
+"Nothing like a late night movie at the theater while munching on some popcorn",
+"The flash of lightning and the crash of thunder strikes the air. A sight to behold",
+"The bus station during a snowy night. The lingering feeling of hope that the bus will reach the desired destination"
+];
 
 //html
 let backButton;
+let favoriteButton;
+let restartButton;
 let aLink; //artist statement link
 let elementY = 0; //movement for elements
+
 
 //light level
 let slider;
@@ -40,6 +63,8 @@ function preload() {
   standardFont = loadFont('normalFont.ttf');
 
 }
+
+//types of images
 // tree = 0, beach = 1, bed = 2, cabin = 3, candle = 4, city = 5
 // castle = 6, forest = 7, gas = 8, ghost =9, campfire = 10
 // resturant = 11, rocky = 12, star = 13, street = 14, theater =15
@@ -62,25 +87,46 @@ function setup() {
 
   //back button on location state
   backButton = createButton("Back");
-  backButton.position(0, 0);
   backButton.id('back');
   backButton.mousePressed(back);
 
+  favoriteButton = createButton("Favorite");
+  favoriteButton.size(100, 40);
+  favoriteButton.id('back');
+  favoriteButton.mousePressed(favorite);
+
+  restartButton = createButton("Restart");
+  restartButton.size(100, 40);
+  restartButton.id('back');
+  restartButton.mousePressed(reset);
+
   //slider for light options
   slider = createSlider(0, 2, 1, 1);
-  slider.position(50, height - 50);
+
   slider.class("mySliders");
 
 }
 
 
 function draw() {
+  //dynamic var for buttons
+backButton.position(0, 0);
+favoriteButton.position(width * 0.2, height * 0.4);
+restartButton.position(width * 0.2, height * 0.4);
+slider.position(50, height - 50);
+
 
 
   if (state === 'title') {
 
-    //hide back button and slider
+    //hide back button and favorite button
     backButton.hide();
+    favoriteButton.hide();
+    restartButton.hide();
+
+    //call art statement and slider
+    aLink.show();
+    slider.show();
 
     //slider light level
     lightLevel = slider.value();
@@ -104,13 +150,14 @@ function draw() {
     //coordinates();
   }
 
-
   if (state === 'play') {
     background(20);
 
     //remove artist Statement and slider
-    aLink.remove();
-    slider.remove();
+    aLink.hide();
+    slider.hide();
+    favoriteButton.hide();
+    restartButton.hide();
 
     light();
 
@@ -124,8 +171,9 @@ function draw() {
 
   if (state === 'location') {
 
-    //call back button
+    //call back button and favorite button
     backButton.show();
+    favoriteButton.show();
 
     //background
     push();
@@ -145,6 +193,38 @@ function draw() {
     image(scene[imageType], windowWidth / 3, windowHeight / 10, 700, 700);
 
 
+  }
+
+  if (state === 'finish') {
+    //hide buttons
+    favoriteButton.hide();
+    backButton.hide();
+
+    //show restart button
+    restartButton.show();
+
+    //same as location beginning
+    push();
+    let c1 = color(0, 89, 207);
+    let c2 = color(28, 0, 105);
+    background(c2);
+
+    pop();
+
+
+    //calling stars
+    for (let i = 0; i < stars.length; i++) {
+      stars[i].move();
+      stars[i].show();
+    }
+
+    image(scene[imageType], windowWidth / 3, windowHeight / 10, 700, 700);
+    //same as location ending
+
+    //info text
+    textSize(20);
+    //textWrap(word);
+    text(answers[imageType], width * 0.75, height/2, width * 0.2, height * 0.6);
   }
 }
 
@@ -243,8 +323,19 @@ function back() {
 
   resetVehicles();
 
-  backButton.remove();
+  backButton.hide();
 }
+
+//choose image
+function favorite() {
+  state = 'finish';
+}
+
+function reset() {
+  state = 'title';
+  resetVehicles();
+}
+
 
 function moveElement() {
   elementY = elementY + 0.3;

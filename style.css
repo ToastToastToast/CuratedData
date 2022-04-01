@@ -2,13 +2,12 @@ html, body {
   margin: 0;
   padding: 0;
 }
+
 canvas {
   display: block;
 }
 
-
-<style>
-.button {
+<style>.button {
   border: none;
   color: white;
   padding: 15px 32px;
@@ -21,9 +20,8 @@ canvas {
 }
 
 /*.button1 {background-color: #f4ca16;} /* Yellow */
-
 /*artist statement style */
-#artistStatement{
+#artistStatement {
   border: none;
   background-color: #f4ca16;
   color: black;
@@ -36,7 +34,7 @@ canvas {
 }
 
 /*back button style */
-#back{
+#back {
   border: none;
   background-color: #f4ca16;
   color: black;
@@ -51,10 +49,9 @@ canvas {
 </style>
 
 /*remove default style */
-.mySliders{
+.mySliders {
   width: 80px;
   background-color: transparent;
-
   -webkit-appearance: none;
 }
 
@@ -67,22 +64,17 @@ canvas {
   background: #000000;
   height: 3px;
   -webkit-appearance: none;
-
   cursor: pointer;
-
 }
 
 /*thumb of the slider */
 .mySliders::-webkit-slider-thumb {
   width: 15px;
   height: 15px;
-  color:#ffbb00;
+  color: #ffbb00;
   background: #ffbb00;
   cursor: pointer;
   -webkit-appearance: none;
-
   margin-top: -6px;
-
   border-radius: 8px;
-
 }
