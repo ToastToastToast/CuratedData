@@ -3,11 +3,11 @@ let y = this.yPos
 
 class Vehicle {
 
-  constructor() {
-    this.xPos = random(50, width - 100);
-    this.yPos = random(50, height - 100);
+  constructor(x,y,t) {
+    this.xPos = x;
+    this.yPos = y;
     this.color = random(0, 255);
-    this.type = Math.floor(Math.random() * 18);
+    this.type = t;
   }
 
   //displays vehicle
@@ -756,11 +756,11 @@ class Vehicle {
   }
 
   getxPos() {
-    return x;
+    return this.xPos;
   }
 
   getyPos() {
-    return y;
+    return this.yPos;
   }
 
   //for shining light on vehicle

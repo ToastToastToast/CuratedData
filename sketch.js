@@ -14,7 +14,7 @@ let answers = [
 "The bustling city streets and cars echo throughout the city. The neon lights scattered across buildings bring life and color to the otherwise gray buildings",
 "There's nothing like the magical night of fireworks",
 "The darkness of the forest and the small flashing lights of fireflies allures people into nature",
-"The comforting of the bright lights and the conveience store located on the side of a dark street eases one's mind, knowing the store haws everything you can ask for",
+"The comforting of the bright lights and the store located on the side of a dark street eases one's mind, knowing the store has everything you can ask for",
 "The spooky figure becomes incredibly intriuging, to the point where the eye can't be drawn away from it",
 "The crackling of the campfire brings the sensation of being outdoors. Marshmallows anyone?",
 "The smell of delicious food drifts through the air. The anticipation of eating a delicious feast fills one's mind",
@@ -23,7 +23,7 @@ let answers = [
 "The night lights lined up along the streets lights the path toward the end destination, guiding the path through the darkness",
 "Nothing like a late night movie at the theater while munching on some popcorn",
 "The flash of lightning and the crash of thunder strikes the air. A sight to behold",
-"The bus station during a snowy night. The lingering feeling of hope that the bus will reach the desired destination"
+"The bus station during a snowy night. The lingering feeling of hope that the bus would bring you to somewhere magical"
 ];
 
 //html
@@ -45,7 +45,7 @@ let imageType = 0;
 
 //vehicles
 let vehicles = [];
-let numVehicles = 2;
+let numVehicles = 4;
 let alpha = 0;
 
 //stars
@@ -163,6 +163,7 @@ slider.position(50, height - 50);
 
     //display the vheicles
     for (let i = 0; i < vehicles.length; i++) {
+    
       if (vehicles[i].found(mouseX, mouseY, adjustLight) == true) {
         vehicles[i].show(alpha);
       }
@@ -304,7 +305,8 @@ function starField() {
 //creates vehicles
 function makeVehicles() {
   for (let i = 0; i < numVehicles; i++) {
-    vehicles[i] = new Vehicle();
+    vehicles[i] = new Vehicle(random(50,windowWidth-50),random(50,windowHeight-50),Math.floor(random(0,18)));
+    
   }
 
 }
